@@ -1,0 +1,107 @@
+Name     251641-02;
+PartNo   00;
+Date     2024-11-09;
+Revision 01;
+Designer Per Bengtsson;
+Company  retroninja;
+Assembly None;
+Location ;
+Device   f1502isptqfp44;
+
+/*
+PLA pin, Pin name, CPLD pin, Function
+1	NC	
+2	I7	42	A12
+3	I6	43	A7
+4	I5	44	A6
+5	I4	2	A5
+6	I3	3	A4
+7	I2	6	A15
+8	I1	8	PHI0
+9	I0	11	F7 > I0
+10	F7	12	F7 > I0	
+11	F6	13	KERNAL
+12	F5	14	KEYPORT
+13	F4	15	ADDRCLK
+14	GND
+15	F3	18	ACIA
+16	F2	19	UPORT
+17	F1	20	PHI2
+18	F0	21	?
+19	_CE	22
+20	I15	23	RAS
+21	I14	25	A10
+22	I13	27	A11
+23	I12	30	A13
+24	I11	33	A9
+25	I10	34	A8
+26	I9	35	A14
+27	I8	37	MUX
+28	VCC
+
+
+  Inputs         0 1 2 3 4 5 6 7 8
+I0    F7         X X - X 1 1 1 X 1
+I1    PHI0       1 1 - X 1 1 1 X 1
+I2    A15        1 1 - 1 1 1 1 X X
+I3    A4         0 0 - X 1 1 1 X X
+I4    A5         0 1 - X 1 0 0 X X
+I5    A6         0 0 - X 0 1 0 X X
+I6    A7         0 0 - X 0 1 0 X X
+I7    A12        1 1 - 1 1 1 1 X X
+I8    MUX        X X - X X X X 1 X
+I9    A14        1 1 - 1 1 1 1 X X
+I10   A8         1 1 - 0 1 1 1 X X
+I11   A9         0 0 - 0 0 0 0 X X
+I12   A13        1 1 - 1 1 1 1 X X
+I13   A11        1 1 - 1 1 1 1 X X
+I14   A10        1 1 - 1 1 1 1 X X
+I15   RAS        X 0 - X 0 0 0 X 0
+
+  Outputs
+F0    UNUSED     X 0 1 X X X X X X
+F1    PHI2       X X 0 X 1 1 1 X 1
+F2    USER       X X 1 X X X 0 X X
+F3    ACIA       0 X 1 X X X X X X
+F4    ADDRCLK    X X 1 X X 0 X X X
+F5    KEYPORT    X X 1 X 0 X X X X
+F6    KERNAL     X X 0 1 X X X X X
+F7    I0         X X 0 X 1 1 1 1 1
+*/
+
+
+PIN 42 = a12;
+PIN 43 = a7;
+PIN 44 = a6;
+PIN 2  = a5;
+PIN 3  = a4;
+PIN 6  = a15;
+PIN 8  = phi0;
+PIN 11 = i0;
+PIN 23 = ras;
+PIN 25 = a10;
+PIN 27 = a11;
+PIN 30 = a13;
+PIN 33 = a9;
+PIN 34 = a8;
+PIN 35 = a14;
+PIN 37 = mux;
+
+PIN 12 = f7;
+PIN 13 = kernal;
+PIN 14 = keyport;
+PIN 15 = addrclk;
+PIN 18 = acia;
+PIN 19 = uport;
+PIN 20 = phi2;
+PIN 21 = f0;
+
+f0 = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # !a5 # a4 # !a15 # !phi0;
+phi2 = !ras & !(a10 & a11 & a13 & !a9 & a8 & a14 & a12 & !a7 & !a6 & a5 & !a4 & a15 & phi0);
+uport = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # a5 # !a4 # !a15 # !phi0 # !i0;
+acia = !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # a5 # a4 # !a15 # !phi0;
+addrclk = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # !a7 # !a6 # a5 # !a4 # !a15 # !phi0;
+keyport = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # !a5 # !a4 # !a15 # !phi0;
+kernal = a10 & a11 & a13 & !a9 & !a8 & a14 & a12 & a15;
+f7 = !phi2 # mux;
+

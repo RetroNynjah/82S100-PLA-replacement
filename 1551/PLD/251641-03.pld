@@ -1,0 +1,70 @@
+Name     251641-03;
+PartNo   00;
+Date     2024-11-10;
+Revision 01;
+Designer Per Bengtsson;
+Company  retroninja;
+Assembly None;
+Location ;
+Device   f1502isptqfp44;
+
+
+
+/*
+PLA	Func	CPLD	Name
+1	NC	
+2	I7	42	RAS
+3	I6	43	Phi0
+4	I5	44	A15
+5	I4	2	A14
+6	I3	3	A13
+7	I2	6	A12
+8	I1	8	A11
+9	I0	11	I0 < F7
+10	F7	12	F7 > I0	
+11	F6	13	NC
+12	F5	14	NC
+13	F4	15	NC
+14	GND
+15	F3	18	NC
+16	F2	19	NC
+17	F1	20	?
+18	F0	21	TIA
+19	_CE	22
+20	I15	23	A5
+21	I14	25	A6
+22	I13	27	A7
+23	I12	30	A8
+24	I11	33	A9
+25	I10	34	MUX
+26	I9	35	A10
+27	I8	37	DEV
+28	VCC
+*/
+
+/* Inputs */
+PIN 42 = ras;
+PIN 43 = phi0;
+PIN 44 = a15;
+PIN 2  = a14;
+PIN 3  = a13;
+PIN 6  = a12;
+PIN 8  = a11;
+PIN 11 = i0;
+PIN 23 = a5;
+PIN 25 = a6;
+PIN 27 = a7;
+PIN 30 = a8;
+PIN 33 = a9;
+PIN 34 = mux;
+PIN 35 = a10;
+PIN 37 = dev;
+
+/* Outputs */
+PIN 12 = f7;
+PIN 20 = f1;  /* what is the purpose of f1? */
+PIN 21 = tia; /* f0 */
+
+f7 = mux # (!mux & phi0 & i0 & !ras);
+f1 = !ras & phi0 & i0;
+tia = !(a6 & a7 & !a8 & a9 & a10 & !ras & phi0 & a15 & a14 & a13 & a12 & a11 & i0 & !(a5 $ dev));
