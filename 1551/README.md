@@ -1,5 +1,5 @@
 ## PLA replacement for Commodore 1551 paddle
-<img src="images/1551paddle.jpg" alt="Rendered image" width="500"/>
+<img src="images/1551paddle.jpg" alt="Rendered image" width="700"/>
 
 This replaces the original MOS part with number 251641-03
 
