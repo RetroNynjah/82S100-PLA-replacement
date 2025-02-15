@@ -11,6 +11,6 @@ I'm far from an expert at CUPL and logic equations so there's likely room for im
 The parts count is low: One ATF1502 PLD (TQFP-44), two 100nF caps (0603) and suitable pin headers.
 I prefer flat pins (Arduino stackable headers) or SIL contact strips like [TE 1544210-2](https://www.digikey.se/short/f8hvfqzt) for a number of reason. They give a much lower profile, they stick better to sockets than round machined pins do and they are not as fragile as machined pins.  
 The low profile is ideal for the Plus/4 and the 1551 paddle PLA.  
-The PLD I've been using is ATF1502ASL-25AU44. It's possible that other varations may work too but it needs to be a 5V part.
+The PLD I've been using and recommend is ATF1502ASL-25AU44. It's possible that other varations may work too but it needs to be a 5V part. The 10ns version is causing glithes when used for a C64 PLA.
 
 <img src="pcb_rev1/images/82S100ReplacementTop.png" alt="Top view" width="250"/>  <img src="pcb_rev1/images/82S100ReplacementBottom.png" alt="Bottom view" width="250"/>
