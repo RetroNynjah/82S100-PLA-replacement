@@ -1,0 +1,97 @@
+Name     251641-02_1b;
+PartNo   251641-02;
+Date     2024-11-09;
+Revision 1b;
+Designer Per Bengtsson;
+Company  ;
+Assembly None;
+Location ;
+Device   f1502isptqfp44;
+
+/*
+PLA pin, Pin name, CPLD pin, Function
+1	NC	
+2	I7	35	A12
+3	I6	34	A7
+4	I5	33	A6
+5	I4	31	A5
+6	I3	27	A4
+7	I2	25	A15
+8	I1	23	PHI0
+9	I0	22	F7 > I0
+10	F7	21	F7 > I0	
+11	F6	20	KERNAL
+12	F5	19	KEYPORT
+13	F4	18	ADDRCLK
+14	GND
+15	F3	15	ACIA
+16	F2	14	UPORT
+17	F1	13	PHI2
+18	F0	12	?
+19	_CE	11
+20	I15	10	RAS
+21	I14	8	A10
+22	I13	6	A11
+23	I12	5	A13
+24	I11	3	A9
+25	I10	2	A8
+26	I9	44	A14
+27	I8	43	MUX
+28	VCC
+*/
+
+
+
+PIN 35 = a12;
+PIN 34 = a7;
+PIN 33 = a6;
+PIN 31  = a5;
+PIN 27  = a4;
+PIN 25  = a15;
+PIN 23  = phi0;
+PIN 22 = i0;
+PIN 10 = ras;
+PIN 8 = a10;
+PIN 6 = a11;
+PIN 5 = a13;
+PIN 3 = a9;
+PIN 2 = a8;
+PIN 44 = a14;
+PIN 43 = mux;
+PIN 11 = CE;
+
+PIN 21 = f7;
+PIN 20 = kernal;
+PIN 19 = keyport;
+PIN 18 = addrclk;
+PIN 15 = acia;
+PIN 14 = uport;
+PIN 13 = phi2;
+PIN 12 = f0;
+
+pinnode = phi2_p;
+
+f0 = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # !a5 # a4 # !a15 # !phi0;
+f0.oe = !CE;
+
+phi2 = !ras & phi0 & i0;
+phi2_p = phi2;
+phi2.oe = !CE;
+
+uport = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # a5 # !a4 # !a15 # !phi0 # !i0;
+uport.oe = !CE;
+
+acia = !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # a5 # a4 # !a15 # !phi0;
+acia.oe = !CE;
+
+addrclk = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # !a7 # !a6 # a5 # !a4 # !a15 # !phi0 # !i0;
+addrclk.oe = !CE;
+
+keyport = ras # !a10 # !a11 # !a13 # a9 # !a8 # !a14 # !a12 # a7 # a6 # !a5 # !a4 # !a15 # !phi0 # !i0;
+keyport.oe = !CE;
+
+kernal = a10 & a11 & a13 & !a9 & !a8 & a14 & a12 & a15;
+kernal.oe = !CE;
+
+f7 = phi2_p # mux;
+f7.oe = !CE;

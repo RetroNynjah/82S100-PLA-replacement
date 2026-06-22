@@ -1,0 +1,75 @@
+Name     251641-03_1b;
+PartNo   251641-03;
+Date     2024-11-10;
+Revision 1b;
+Designer Per Bengtsson;
+Company  ;
+Assembly None;
+Location ;
+Device   f1502isptqfp44;
+
+
+
+/*
+PLA	Func	CPLD	Name
+1	NC	
+2	I7		35		RAS
+3	I6		34		Phi0
+4	I5		33		A15
+5	I4		31		A14
+6	I3		27		A13
+7	I2		25		A12
+8	I1		23		A11
+9	I0		22		I0 < F7
+10	F7		21		F7 > I0	
+11	F6		20		NC
+12	F5		19		NC
+13	F4		18		NC
+14	GND
+15	F3		15		NC
+16	F2		14		NC
+17	F1		13		?
+18	F0		12		TIA
+19	_CE		11
+20	I15		10		A5
+21	I14		8		A6
+22	I13		6		A7
+23	I12		5		A8
+24	I11		3		A9
+25	I10		2		MUX
+26	I9		44		A10
+27	I8		43		DEV
+28	VCC
+*/
+
+/* Inputs */
+PIN 35 = ras;
+PIN 34 = phi0;
+PIN 33 = a15;
+PIN 31 = a14;
+PIN 27 = a13;
+PIN 25 = a12;
+PIN 23 = a11;
+PIN 22 = i0;
+PIN 10 = a5;
+PIN 8  = a6;
+PIN 6  = a7;
+PIN 5  = a8;
+PIN 3  = a9;
+PIN 2  = mux;
+PIN 44 = a10;
+PIN 43 = dev;
+PIN 11 = CE;
+
+/* Outputs */
+PIN 21 = f7;
+PIN 13 = f1;  /* what is the purpose of f1? */
+PIN 12 = tia; /* f0 */
+
+f7 = mux # (!mux & phi0 & i0 & !ras);
+f1 = !ras & phi0 & i0;
+tia = !(a6 & a7 & !a8 & a9 & a10 & !ras & phi0 & a15 & a14 & a13 & a12 & a11 & i0 & !(a5 $ dev));
+
+f7.oe = !CE;
+f1.oe = !CE;
+tia.oe = !CE;

@@ -1,0 +1,83 @@
+Name       906114-05 ;
+PartNo     906114-05 ;
+Date       2026-04-25 ;
+Revision   1 ;
+Designer   Per Bengtsson ;
+Company    ;
+Assembly   ;
+Location   ;
+Device     f1502isptqfp44 ;
+
+
+/* ******************* INPUT PINS ********************* */
+/* 82S100 pin names, 1502 replacement rev 1 pin numbers */
+PIN 11 = i0;
+PIN 8  = i1;
+PIN 6  = i2;
+PIN 3  = i3;
+PIN 2  = i4;
+PIN 44 = i5;
+PIN 43 = i6;
+PIN 42 = i7;
+PIN 37 = i8;
+PIN 35 = i9;
+PIN 34 = i10;
+PIN 33 = i11;
+PIN 30 = i12;
+PIN 27 = i13;
+PIN 25 = i14;
+PIN 23 = i15;
+PIN 22 = !OE;
+
+/* ****************** OUTPUT PINS ********************* */
+/* 82S100 pin names, 1502 replacement rev 1 pin numbers */
+PIN 21 = f0;
+PIN 20 = f1;
+PIN 19 = f2;
+PIN 18 = f3;
+PIN 15 = f4;
+PIN 14 = f5;
+PIN 13 = f6;
+PIN 12 = f7;
+
+
+!f0 = (i0 & !i1 & !i2 & !i3 & !i8 & !i9 & !i11) #
+      (i0 & !i1 & !i2 & !i3 & i8 & !i11 & !i12);
+
+!f1 = (!i0 & i1 & !i2 & !i3 & !i8 & !i9 & !i11) #
+      (!i0 & i1 & !i2 & !i3 & i8 & !i11 & !i12);
+
+!f2 = (i0 & i1 & !i2 & !i3 & !i8 & !i9 & !i11) #
+      (i0 & i1 & !i2 & !i3 & i8 & !i11 & !i12);
+
+!f3 = (!i0 & !i1 & i2 & !i3 & !i8 & !i9 & !i11) #
+      (!i0 & !i1 & i2 & !i3 & i8 & !i11 & !i12);
+
+!f4 = (!i8 & !i10 & i11) #
+      (i0 & !i1 & !i2 & !i3 & !i8 & !i10) #
+      (i8 & i11 & !i13) #
+      (i0 & !i1 & !i2 & !i3 & i8 & !i13);
+
+!f5 = (!i8 & !i10 & i11) #
+      (!i0 & i1 & !i2 & !i3 & !i8 & !i10) #
+      (i8 & i11 & !i13) #
+      (!i0 & i1 & !i2 & !i3 & i8 & !i13);
+
+!f6 = (!i8 & !i10 & i11) #
+      (i0 & i1 & !i2 & !i3 & !i8 & !i10) #
+      (i8 & i11 & !i13) #
+      (i0 & i1 & !i2 & !i3 & i8 & !i13);
+
+!f7 = (!i8 & !i10 & i11) #
+      (!i0 & !i1 & i2 & !i3 & !i8 & !i10) #
+      (i8 & i11 & !i13) #
+      (!i0 & !i1 & i2 & !i3 & i8 & !i13);
+
+f0.oe = OE;
+f1.oe = OE;
+f2.oe = OE;
+f3.oe = OE;
+f4.oe = OE;
+f5.oe = OE;
+f6.oe = OE;
+f7.oe = OE;
