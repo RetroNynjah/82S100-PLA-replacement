@@ -26,7 +26,7 @@ The part count is low: One ATF1502 CPLD, two 100nF caps (0603) and suitable pin 
 For rev 1, I prefer flat pins (Arduino stackable headers) or SIL contact strips like [TE 1544210-2](https://www.digikey.se/short/f8hvfqzt) for a number of reason. They give a much lower profile, they stick better to sockets than round machined pins do and they are not as fragile as machined pins. The low profile is ideal for the Plus/4 and the 1551 paddle PLA.  
 For rev 1b, machined pins are better as the components are mounted on the back side and the machined headers adds the necessary clearance.  
 
-The CPLD I've been using and recommend is ATF1502ASL-25AU44. It's possible that other varations may work too but it needs to be a 5V part. The 10ns version is causing glithes when used for a C64 PLA.
+The CPLD I've been using and recommend is ATF1502ASL-25AU44. It's possible that other varations may work too but it needs to be a 5V part. The 10ns version is causing glitches when used for a C64 PLA.
 
 ## Rev 1
 <img src="pcb_rev1/images/82S100_rev1_front.png" alt="Rev 1 front view" width="250"/>  <img src="pcb_rev1/images/82S100_rev1_back.png" alt="Rev 1 back view" width="250"/>  
